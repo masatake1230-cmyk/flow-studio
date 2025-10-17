@@ -1,5 +1,13 @@
 export default function Page() {
   return (
+    <main className="grid">
+      <div className="card" style={{background:'#ff3b81', color:'#000', fontWeight:700}}>
+        ★ 新しいビルドが見えています（このピンク箱が出ていればOK）
+      </div>
+      {/* 既存の3カードはこの下にそのまま */}
+
+export default function Page() {
+  return (
     // app/page.tsx の先頭あたり
 export default function Page() {
   return (
