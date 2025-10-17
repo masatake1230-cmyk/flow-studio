@@ -1,6 +1,6 @@
 'use client';
-import BackupBar from '@/components/BackupBar';
-import { getLocal, setLocal } from '@/lib/storage';
+import BackupBar from '../../components/BackupBar'
+import { getLocal, setLocal } from '../../lib/storage'
 import { useEffect, useState } from 'react';
 
 type Inspiration = {
