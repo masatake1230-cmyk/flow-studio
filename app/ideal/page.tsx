@@ -1,5 +1,5 @@
 'use client';
-import BackupBar from '@/components/BackupBar';
+import BackupBar from '../../components/BackupBar';
 import { getLocal, setLocal } from '@/lib/storage';
 import { useEffect, useMemo, useState } from 'react';
 
