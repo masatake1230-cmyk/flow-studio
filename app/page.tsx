@@ -1,5 +1,13 @@
 export default function Page() {
   return (
+    // app/page.tsx の先頭あたり
+export default function Page() {
+  return (
+    <main className="grid">
+      <div className="card" style={{background:'#ff3b81', color:'#000', fontWeight:700}}>
+        ★ このピンク箱が見えたら新しいデプロイが表示できています
+      </div>
+      {/* 既存の3つのカードはこのまま */}
     <main className="grid">
       <section className="card">
         <h2 className="text-xl font-semibold">Tab A: Inspiration Bank</h2>
