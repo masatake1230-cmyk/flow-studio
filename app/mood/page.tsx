@@ -1,7 +1,7 @@
 'use client';
-import BackupBar from '../../components/BackupBar';
-import { getLocal, setLocal } from '../../lib/storage';
-import { useEffect, useMemo, useState } from 'react';
+import BackupBar from "../../components/BackupBar";
+import { getLocal, setLocal } from "../../lib/storage";
+import { useEffect, useMemo, useState } from "react";
 
 type Mood = {
   id: string;
