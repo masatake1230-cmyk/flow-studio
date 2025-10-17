@@ -15,6 +15,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body>
+        {/* ===== 一時的に PWA キャッシュを完全解除するスクリプト ===== */}
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+if ('serviceWorker' in navigator) {
+  // すべての登録済みSWを解除
+  navigator.serviceWorker.getRegistrations().then(regs => {
+    regs.forEach(r => r.unregister());
+  });
+  // キャッシュストレージも掃除
+  if (window.caches && caches.keys) {
+    caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+  }
+}
+`}}
+/>
+{/* ===== /ここまで（一度反映されたら削除してOK） ===== */}
         <div className="container">
           <header className="vstack">
             <div className="title">Flow Studio</div>
