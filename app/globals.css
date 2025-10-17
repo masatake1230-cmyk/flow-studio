@@ -1,19 +1,32 @@
-/* Modern minimal (pure CSS) */
-:root{
-  --bg:#0b0f1a; --fg:#e6e9ef; --muted:#9aa3b2;
-  --card:rgba(15,21,36,.75); --border:rgba(255,255,255,.12);
-  --ring:rgba(255,255,255,.18); --btn:rgba(255,255,255,.10);
-  --btn-hover:rgba(255,255,255,.18); --shadow:0 12px 30px rgba(0,0,0,.28);
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:radial-gradient(1200px 800px at 10% 10%,#141a2a 0%,#0b0f1a 60%) fixed;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Flow Studio",
+  description: "Inspiration × Mood × Ideal Life",
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "icon", url: "/icon-192.png" },
+    { rel: "apple-touch-icon", url: "/icon-192.png" },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ja">
+      <body>
+        {/* ---- CSS override: ここが“今っぽデザイン”の直挿し ---- */}
+        <style
+          // ※ ここを編集すれば即反映されます（ビルドは必要だが設定依存が少ない）
+          dangerouslySetInnerHTML={{
+            __html: `
+:root{--bg:#0b0f1a;--fg:#e6e9ef;--muted:#9aa3b2;--card:rgba(15,21,36,.75);--border:rgba(255,255,255,.12);--ring:rgba(255,255,255,.18);--btn:rgba(255,255,255,.10);--btn-hover:rgba(255,255,255,.18);--shadow:0 12px 30px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(1200px 800px at 10% 10%,#141a2a 0%,#0b0f1a 60%) fixed;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
 .container{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
-.title{font-size:28px;font-weight:800;letter-spacing:.2px}
-.subtitle{color:var(--muted);margin-top:4px}
+.title{font-size:28px;font-weight:800;letter-spacing:.2px}.subtitle{color:var(--muted);margin-top:4px}
 .nav{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .nav a{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--btn);border:1px solid var(--border);color:var(--fg);text-decoration:none;transition:.2s;backdrop-filter:blur(6px)}
 .nav a:hover{background:var(--btn-hover);border-color:var(--ring)}
 hr{border:none;height:1px;background:var(--border);margin:18px 0 22px}
 .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(8px)}
-.vstack{display:flex;flex-direction
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;paddin
