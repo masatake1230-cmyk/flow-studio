@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Flow Studio',
-  description: 'Inspiration, Mood, and Ideal Routine Tracker',
+  description: 'Inspiration × Mood × Ideal Life',
   manifest: '/manifest.json',
   icons: [
     { rel: 'icon', url: '/icon-192.png' },
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <hr />
           {children}
-          <footer style={{marginTop: 24}}>
+          <footer className="mt-8">
             <small className="muted">PWA: ホーム画面に追加でアプリ化できます。</small>
             <script
               dangerouslySetInnerHTML={{
