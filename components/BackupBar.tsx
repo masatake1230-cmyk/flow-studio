@@ -1,5 +1,5 @@
 'use client';
-import { exportAll, importAll } from '@/lib/storage';
+import { exportAll, importAll } from '../lib/storage'; // ← 相対パスに変更！
 import { useRef, useState } from 'react';
 
 export default function BackupBar() {
