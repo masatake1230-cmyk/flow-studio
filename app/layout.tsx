@@ -15,9 +15,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body>
-        {/* ===== 一時的に PWA キャッシュを完全解除するスクリプト ===== */}
-
-{/* ===== /ここまで（一度反映されたら削除してOK） ===== */}
+        {/* --- 一度だけSWとキャッシュを完全解除（反映確認できたら削除OK） --- */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister()));
+  if (window.caches?.keys) caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+}
+`,
+          }}
+        />
         <div className="container">
           <header className="vstack">
             <div className="title">Flow Studio</div>
@@ -31,13 +39,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <hr />
           {children}
-          <footer className="mt-8">
+          <footer style={{ marginTop: 24 }}>
             <small className="muted">PWA: ホーム画面に追加でアプリ化できます。</small>
+            {/* ↓↓↓ SWの再登録コードは削除（再導入するまで不要） ↓↓↓ */}
+            {/*
             <script
               dangerouslySetInnerHTML={{
-                __html: `if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{})})}`
+                __html: \`if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{})})}\`
               }}
             />
+            */}
           </footer>
         </div>
       </body>
